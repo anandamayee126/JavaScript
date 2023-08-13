@@ -11,10 +11,16 @@
 //     list[i].style.fontWeight='bold';
 // }
 
-const li= document.getElementsByTagName('li')
-//let ulChild=ulParent.children;
-for(var i=0;i<li.length;i++) {
-    li[i].style.color='green';
-    li[i].style.fontWeight='bold';
-}
+// const li= document.getElementsByTagName('li')
+// //let ulChild=ulParent.children;
+// for(var i=0;i<li.length;i++) {
+//     li[i].style.color='green';
+//     li[i].style.fontWeight='bold';
+// }
+
+const secondItem = document.querySelector('.list-group-item:nth-child(2)');
+secondItem.style.backgroundColor='green';
+
+const thirdItem=document.querySelector('.list-group-item:nth-child(3)');
+thirdItem.style.display='none';
 
