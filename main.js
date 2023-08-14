@@ -82,17 +82,26 @@ form.addEventListener('submit',addItem);
 function addItem(e) {
     e.preventDefault();
     const itemList = document.querySelector('.list-group');
-    const input_val= document.getElementById('item').value;
+    const input_val1= document.getElementById('item1').value;
+    const input_val2= document.getElementById('item2').value;
+    const input_val=input_val1 +" "+input_val2;
 
     const new_it= document.createElement('li');
     new_it.className='list-group-item';
     new_it.appendChild(document.createTextNode(input_val));
     itemList.appendChild(new_it);
 
-    const btn= document.createElement('button');
-    btn.className='btn btn-danger btn-sm float-right delete';
-    btn.appendChild(document.createTextNode('X'));
-    new_it.appendChild(btn);
+    const btn1= document.createElement('button');
+    const btn2= document.createElement('button');
+    btn1.className='btn btn-danger btn-sm float-right delete';
+    //const edit= document.createElement('button');
+    btn2.className='btn btn-info btn-sm float-right delete';
+    
+    btn2.appendChild(document.createTextNode('Edit'));
+    btn1.appendChild(document.createTextNode('X'));
+    new_it.appendChild(btn1);
+    new_it.appendChild(btn2);
+    
 }
 
 const ul= document.querySelector('#items');
@@ -109,6 +118,29 @@ function removeItem(e){
     }
 }
 
+const filter= document.getElementById('filter');
+filter.addEventListener('keyup',filtering);
+
+
+function filtering(e)
+{
+    const text_search=e.target.value.toLowerCase();
+    const items= ul.getElementsByTagName('li');
+    Array.from(items).forEach(function(item)
+    {
+        const itemName = item.firstChild.textContent;
+        //console.log(itemName);
+        if(itemName.toLowerCase().indexOf(text_search)!=-1)
+        {
+            item.style.display = 'block';
+        }
+        else
+        {
+            item.style.display = 'none';
+        }
+    });
+
+}
 
 
 
